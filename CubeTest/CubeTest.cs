@@ -1,49 +1,44 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace CubeTest
 {
-    [TestClass]
+    [TestFixture]
     public class CubeTest
     {
-        [TestMethod]
-        public void GetVolumeWithoutOuterMostLayer()
+        [TestCaseSource(typeof(CubeTestDataSource), "BuildCalculateInnerVolumeTestCases")]
+        public void GetInnerVolumeTest(int sideLength, int expectedInnerVolume)
         {
             // Arrange
-            const int sideLength = 1;
-            const int expectedVolume = 0;
-
              var cube = new Cube.Cube(sideLength);
 
             // Act
-            var volume = cube.GetVolumeWithoutOuterMostLayer();
+            var actualInnerVolume = cube.GetInnerVolume();
 
             // Assert
             Console.WriteLine("sideLength: {0}", sideLength);
-            Console.WriteLine("volume: {0}", volume);
-            Console.WriteLine("expectedVolume: {0}", expectedVolume);
+            Console.WriteLine("actualInnerVolume: {0}", actualInnerVolume);
+            Console.WriteLine("expectedInnerVolume: {0}", expectedInnerVolume);
 
-            Assert.AreEqual(volume, expectedVolume);
+            Assert.AreEqual(actualInnerVolume, expectedInnerVolume);
         }
 
-        [TestMethod]
-        public void GetVolume()
+        [TestCaseSource(typeof(CubeTestDataSource), "BuildCalculateVolumeTestCases")]
+        public void GetVolumeTest(int sideLength, int expectedVolume)
         {
             // Arrange
-            const int sideLength = 3;
-            const int expectedVolume = 27;
-
             var cube = new Cube.Cube(sideLength);
 
             // Act
-            var volume = cube.GetVolume();
+            var actualVolume = cube.GetVolume();
 
             // Assert
             Console.WriteLine("sideLength: {0}", sideLength);
-            Console.WriteLine("volume: {0}", volume);
+            Console.WriteLine("actualVolume: {0}", actualVolume);
             Console.WriteLine("expectedVolume: {0}", expectedVolume);
 
-            Assert.AreEqual(volume, expectedVolume);
+            Assert.AreEqual(actualVolume, expectedVolume);
         }
     }
 }

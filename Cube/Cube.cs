@@ -14,9 +14,13 @@ namespace Cube
             return CalculatePow(_sideLength, 3);
         }
 
-        public int GetVolumeWithoutOuterMostLayer()
+        /// <summary>
+        /// Removing the outer most layer.
+        /// </summary>
+        /// <returns></returns>
+        public int GetInnerVolume()
         {
-            if (_sideLength == 1)
+            if (_sideLength <= 2)
             {
                 return 0;
             }
