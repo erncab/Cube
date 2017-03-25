@@ -16,21 +16,22 @@ namespace CubeTest
              var cube = new Cube.Cube(sideLength);
 
             // Act
-            var volume = cube.GetVolume();
+            var volume = cube.GetVolumeWithoutOuterMostLayer();
 
             // Assert
-            Assert.AreEqual(volume, expectedVolume);
-
             Console.WriteLine("sideLength: {0}", sideLength);
             Console.WriteLine("volume: {0}", volume);
+            Console.WriteLine("expectedVolume: {0}", expectedVolume);
+
+            Assert.AreEqual(volume, expectedVolume);
         }
 
         [TestMethod]
         public void GetVolume()
         {
             // Arrange
-            const int sideLength = 2;
-            const int expectedVolume = 8;
+            const int sideLength = 3;
+            const int expectedVolume = 27;
 
             var cube = new Cube.Cube(sideLength);
 
@@ -38,10 +39,11 @@ namespace CubeTest
             var volume = cube.GetVolume();
 
             // Assert
-            Assert.AreEqual(volume, expectedVolume);
-
             Console.WriteLine("sideLength: {0}", sideLength);
             Console.WriteLine("volume: {0}", volume);
+            Console.WriteLine("expectedVolume: {0}", expectedVolume);
+
+            Assert.AreEqual(volume, expectedVolume);
         }
     }
 }
