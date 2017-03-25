@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Cube</h2>
+
+  <div class="row">
+    <div class="col-sm-10">
+      <label for="cubeSides">Sides length:</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-10">
+      <input id="cubeSides" type="text" class="form-control" value="0,1,2,3,4,5,6" #cubeSidesInput>
+    </div>
+
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-primary" (click)="calculateVolumes(cubeSidesInput.value)" [disabled]="cubeSidesInput.value.length == 0">Calculate</button>
+    </div>
+  </div>
+
+  <h2>Cube volumes</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Side length</th>
+      <th>Volume</th>
+      <th>Inner cube volume</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cube of _cubes">
+      <td>{{cube.side}}</td>
+      <td>{{cube.volume}}</td>
+      <td>{{cube.innerCubeVolume}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+

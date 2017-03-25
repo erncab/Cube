@@ -6,7 +6,7 @@ using Cube.WebApi.Models;
 
 namespace Cube.WebApi.Controllers
 {
-    [EnableCors("http://localhost:4200", "*", "*")]
+    [EnableCors("http://localhost:4201", "*", "*")]
     public class CubeController : ApiController
     {
         // GET api/cube
@@ -14,7 +14,7 @@ namespace Cube.WebApi.Controllers
         {
             var arrSides = sides.Split(',');
 
-            var pairs = new List<CubeVM>();
+            var cubeVms = new List<CubeVM>();
 
             foreach (var strSide in arrSides)
             {
@@ -25,7 +25,7 @@ namespace Cube.WebApi.Controllers
                 var volume = cube.GetVolume();
                 var innerCubeVolume = cube.GetInnerVolume();
 
-                pairs.Add(new CubeVM
+                cubeVms.Add(new CubeVM
                 {
                     Side = side, 
                     Volume = volume, 
@@ -33,7 +33,7 @@ namespace Cube.WebApi.Controllers
                 });
             }
 
-            return pairs;
+            return cubeVms;
         }
     }
 }
