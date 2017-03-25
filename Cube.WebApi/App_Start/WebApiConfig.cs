@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 
 namespace Cube.WebApi
 {
@@ -10,6 +11,9 @@ namespace Cube.WebApi
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
