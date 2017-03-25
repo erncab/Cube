@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CubeTest
 {
@@ -6,10 +7,30 @@ namespace CubeTest
     public class CubeTest
     {
         [TestMethod]
-        public void GetVolume()
+        public void GetVolumeWithoutOuterMostLayer()
         {
             // Arrange
             const int sideLength = 1;
+            const int expectedVolume = 0;
+
+             var cube = new Cube.Cube(sideLength);
+
+            // Act
+            var volume = cube.GetVolume();
+
+            // Assert
+            Assert.AreEqual(volume, expectedVolume);
+
+            Console.WriteLine("sideLength: {0}", sideLength);
+            Console.WriteLine("volume: {0}", volume);
+        }
+
+        [TestMethod]
+        public void GetVolume()
+        {
+            // Arrange
+            const int sideLength = 2;
+            const int expectedVolume = 8;
 
             var cube = new Cube.Cube(sideLength);
 
@@ -17,7 +38,10 @@ namespace CubeTest
             var volume = cube.GetVolume();
 
             // Assert
-            Assert.AreEqual(volume, 1);
+            Assert.AreEqual(volume, expectedVolume);
+
+            Console.WriteLine("sideLength: {0}", sideLength);
+            Console.WriteLine("volume: {0}", volume);
         }
     }
 }
