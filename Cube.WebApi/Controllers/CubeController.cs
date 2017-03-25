@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Cube.WebApi.Models;
 
 namespace Cube.WebApi.Controllers
 {
+    [EnableCors("http://localhost:4200", "*", "*")]
     public class CubeController : ApiController
     {
         // GET api/cube
-        public IEnumerable<Pair> Get(VolumeType volumeType, string sides)
+        public IEnumerable<CubeVM> Get(string sides)
         {
             var arrSides = sides.Split(',');
 
-            var pairs = new List<Pair>();
+            var pairs = new List<CubeVM>();
 
             foreach (var strSide in arrSides)
             {
@@ -20,23 +22,15 @@ namespace Cube.WebApi.Controllers
 
                 var cube = new Cube(side);
 
-                int volume;
+                var volume = cube.GetVolume();
+                var innerCubeVolume = cube.GetInnerVolume();
 
-                switch (volumeType)
+                pairs.Add(new CubeVM
                 {
-                    case VolumeType.FullCube:
-                        volume = cube.GetVolume();
-                        break;
-
-                    case VolumeType.InnerCube:
-                        volume = cube.GetInnerVolume();
-                        break;
-
-                    default:
-                        throw new ArgumentOutOfRangeException("volumeType", volumeType, null);
-                }
-
-                pairs.Add(new Pair { Side = side, Volume = volume });
+                    Side = side, 
+                    Volume = volume, 
+                    InnerCubeVolume = innerCubeVolume
+                });
             }
 
             return pairs;
