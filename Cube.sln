@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeTest", "CubeTest\CubeTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube", "Cube\Cube.csproj", "{55096EEF-4666-4637-9312-83D8E9BEF88B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube.WebApi", "Cube.WebApi\Cube.WebApi.csproj", "{3D22B15D-C8E0-4B02-87DE-A55F3AC3AC12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{55096EEF-4666-4637-9312-83D8E9BEF88B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55096EEF-4666-4637-9312-83D8E9BEF88B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55096EEF-4666-4637-9312-83D8E9BEF88B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D22B15D-C8E0-4B02-87DE-A55F3AC3AC12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D22B15D-C8E0-4B02-87DE-A55F3AC3AC12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D22B15D-C8E0-4B02-87DE-A55F3AC3AC12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D22B15D-C8E0-4B02-87DE-A55F3AC3AC12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
