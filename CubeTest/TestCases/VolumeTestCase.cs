@@ -1,4 +1,4 @@
-﻿namespace CubeTest
+﻿namespace CubeTest.TestCases
 {
     public class VolumeTestCase
     {

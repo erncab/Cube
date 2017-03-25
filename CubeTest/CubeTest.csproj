@@ -55,9 +55,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CubeTest.cs" />
-    <Compile Include="CubeTestDataSource.cs" />
+    <Compile Include="TestCases\CubeTestDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VolumeTestCase.cs" />
+    <Compile Include="TestCases\VolumeTestCase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cube\Cube.csproj">
