@@ -25,9 +25,7 @@ namespace Cube
                 return 0;
             }
 
-            const int pow = 3;
-
-            return CalculatePow(_sideLength, pow) - CalculatePow(_sideLength - 1, pow);
+            return CalculatePow(_sideLength - 2, 3);
         }
 
         private static int CalculatePow(int number, int pow)

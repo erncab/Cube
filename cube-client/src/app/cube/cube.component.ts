@@ -12,15 +12,16 @@ import {Cube} from "../models/cube";
 })
 export class CubeComponent implements OnInit {
   private _cubes: Cube[] = [];
+  private _sides: string = "0,1,2,3,4,5,6,7,8,9,10";
 
   constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
+    this.getWebApi(this._sides);
   }
 
-  // "0,1,2,3,4,5,6"
-  calculateVolumes(sides: string) {
-    this.getWebApi(sides);
+  calculateVolumes() {
+    this.getWebApi(this._sides);
   }
 
   private getWebApi(sides: string) {
