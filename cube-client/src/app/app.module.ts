@@ -6,15 +6,20 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { CubeComponent } from './cube/cube.component';
 
+import { ChartsModule } from 'ng2-charts';
+import { LineChartDemoComponent } from './line-chart-demo/line-chart-demo.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    CubeComponent
+    CubeComponent,
+    LineChartDemoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
