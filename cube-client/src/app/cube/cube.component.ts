@@ -35,8 +35,29 @@ export class CubeComponent implements OnInit {
         (data: Cube[]) => {
           console.log(data);
           this._cubes = data;
+
+          this.updateGraph(this._cubes);
+
+          console.log("this._cubes: " + this._cubes);
         }
       );
+  }
+
+  private updateGraph(series: Cube[]) {
+    let _lineChartData:Array<any> = new Array(series.length);
+
+    for (let i = 0; i < this.lineChartData.length; i++) {
+      _lineChartData[i] = {
+        label: this.lineChartData[i].label,
+        data: new Array(series.length)
+      };
+
+      for (let j = 0; j < series.length; j++) {
+        _lineChartData[i].data[j] = series[j].volume;
+      }
+    }
+
+    this.lineChartData = _lineChartData;
   }
 
   /**************************** chart *************************************************/
@@ -44,12 +65,20 @@ export class CubeComponent implements OnInit {
 
     // lineChart
   public lineChartData:Array<any> = [
-    {data: [22, 59, 80, 81, 56, 55, 40, 34, 78, 22], label: 'Volume'},
-    {data: [17, 48, 40, 19, 86, 27, 90, 89, 54, 42], label: 'Inner Cube Volume'},
-    {data: [89, 48, 77, 9, 100, 27, 40, 21, 67, 90], label: 'Difference'}
+    {
+      label: 'Volume',
+      data: [22, 59, 80, 81, 56, 55, 40, 34, 78, 22]
+    },
+    {
+      label: 'Inner Cube Volume',
+      data: [17, 48, 40, 19, 86, 27, 90, 89, 54, 42]
+    },
+    {
+      label: 'Difference',
+      data: [89, 48, 77, 9, 100, 27, 40, 21, 67, 90]
+    }
   ];
 
-  //public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartLabels:Array<any> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
   public lineChartOptions: any = {
