@@ -18,6 +18,8 @@ export class CubeComponent implements OnInit {
 
   ngOnInit() {
     this.getWebApi(this._sides);
+
+    //this.randomize();
   }
 
   calculateVolumes() {
@@ -36,4 +38,69 @@ export class CubeComponent implements OnInit {
         }
       );
   }
+
+  /**************************** chart *************************************************/
+    // https://github.com/valor-software/ng2-charts/issues/458
+
+    // lineChart
+  public lineChartData:Array<any> = [
+    {data: [22, 59, 80, 81, 56, 55, 40, 34, 78, 22], label: 'Volume'},
+    {data: [17, 48, 40, 19, 86, 27, 90, 89, 54, 42], label: 'Inner Cube Volume'},
+    {data: [89, 48, 77, 9, 100, 27, 40, 21, 67, 90], label: 'Difference'}
+  ];
+
+  //public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels:Array<any> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+
+  public lineChartOptions: any = {
+    responsive: true
+  };
+
+  public lineChartColors:Array<any> = [
+    {
+      borderColor: 'red',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    {
+      borderColor: 'blue',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(77,83,96,1)'
+    },
+    {
+      borderColor: 'green',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+
+  public lineChartLegend: boolean = true;
+
+  public lineChartType: string = 'line';
+
+  public randomize(): void {
+    let _lineChartData:Array<any> = new Array(this.lineChartData.length);
+
+    for (let i = 0; i < this.lineChartData.length; i++) {
+      _lineChartData[i] = {
+        data: new Array(this.lineChartData[i].data.length),
+        label: this.lineChartData[i].label};
+
+      for (let j = 0; j < this.lineChartData[i].data.length; j++) {
+        _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
+      }
+    }
+
+    this.lineChartData = _lineChartData;
+  }
+
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+  /**************************** chart *************************************************/
 }

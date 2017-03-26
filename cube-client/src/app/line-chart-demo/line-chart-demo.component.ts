@@ -1,3 +1,6 @@
+
+// https://github.com/valor-software/ng2-charts/issues/458
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

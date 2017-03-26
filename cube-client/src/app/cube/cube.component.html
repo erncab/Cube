@@ -17,8 +17,8 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-6">
+  <div class="row" style="padding-top: 80px;">
+    <div class="col-sm-5">
       <h2>Cube volumes</h2>
       <table class="table" style="text-align: right;">
         <thead>
@@ -40,8 +40,18 @@
       </table>
     </div>
 
-    <div class="col-sm-6">
-      <app-line-chart-demo></app-line-chart-demo>
+    <div class="col-sm-7" style="padding-left: 80px;">
+      <div style="display: block;">
+        <canvas baseChart width="400" height="400"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
     </div>
   </div>
 
